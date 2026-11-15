@@ -1,505 +1,348 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emad Siddig | Full-Stack Developer</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link href="style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Emad Siddig — Full-Stack JavaScript Developer based in Rwanda. Building web apps, REST APIs, and creative software solutions.">
+  <title>Emad Siddig | Full-Stack JavaScript Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body data-bs-spy="scroll" data-bs-target="#navbar-example" tabindex="0">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top" id="navbar-example">
-        <div class="container">
-            <a class="navbar-brand" href="#">Emad<span class="accent">.</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+      <div class="profile-card">
+        <img class="profile-avatar" src="assets/emad-bw.jpg" alt="Emad Siddig" width="72" height="72">
+        <div class="profile-meta">
+          <p class="profile-name">Emad Siddig</p>
+          <p class="profile-role">Full-Stack JS Developer</p>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <div class="row min-vh-100 align-items-center">
-                <div class="col-12 text-center">
-                    <div class="hero-content">
-                        <p class="hero-greeting">Hello, I'm</p>
-                        <h1 class="hero-name">Emad Siddig</h1>
-                        <p class="hero-title">
-                            I'm a <span class="typing-text"></span><span class="cursor">|</span>
-                        </p>
-                        <p class="hero-description">
-                            full-stack web Developer & Aspiring Software Developer
-                        </p>
-                        <div class="hero-buttons">
-                            <a href="#projects" class="btn btn-primary me-3">View My Work</a>
-                            <a href="#contact" class="btn btn-outline-light">Contact Me</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="profile-social">
+          <a href="https://github.com/Omda-Si" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 7.5c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .26.18.58.69.48A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/emad-siddig-10234535b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 7.05a1.96 1.96 0 1 0 0-3.92 1.96 1.96 0 0 0 0 3.92zM20.44 20h-3.37v-5.6c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95V20H9.69V8.5h3.24v1.57h.05c.45-.85 1.55-1.75 3.19-1.75 3.41 0 4.04 2.25 4.04 5.17V20z"/></svg>
+          </a>
+          <a href="https://x.com/omdasiddig1" target="_blank" rel="noopener noreferrer" aria-label="X">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M18.9 3H21l-6.52 7.45L22 21h-5.9l-4.62-6.03L6.1 21H4l6.98-7.97L2 3h6.05l4.18 5.5L18.9 3zm-1.04 16.2h1.64L7.08 4.7H5.32l12.54 14.5z"/></svg>
+          </a>
         </div>
-        <div class="scroll-down">
-            <a href="#about">
-                <i class="fas fa-chevron-down"></i>
-            </a>
+        <div class="profile-actions">
+          <a class="btn btn-cyan" href="#contact">Hire Me Now</a>
+          <a class="btn btn-ghost" href="mailto:emadosiddig@gmail.com">Contact Me</a>
         </div>
-    </section>
+      </div>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center">
-                        <h2>About <span class="accent">Me</span></h2>
-                        <p class="section-subtitle">Get to know me better</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-4 mb-lg-0">
-                    <div class="about-image">
-                        <div class="image-frame">
-                             <i class="fas fa-code" style="font-size:120px; color:#00d4ff;"></i>
-                        </div>
-                        <div class="social-links">
-                            <a href="https://github.com/Emadsiddig" class="social-link"><i class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/emad-siddig-10234535b?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://x.com/omdasiddig1" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.instagram.com/omda_wadsiddig?igsh=MTIzenNkampoNjd5bA==" class="social-link"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="about-content">
-                        <h3>I'm a passionate Software Developer</h3>
-                        <p>
-                            I'm Emad Siddig, a passionate Software Engineer and Full-Stack Developer who enjoys turning ideas into reliable, scalable, and user-friendly digital solutions. I work across both front-end and back-end development, focusing on writing clean, efficient code and building applications that deliver real value.
-                        </p>
-                        <p>
-                            I have a strong foundation in programming concepts, problem-solving, and system design, and I enjoy continuously learning new technologies to improve my skills. I believe that good software is not only about functionality, but also about performance, maintainability, and user experience.
-                        </p>
-                        <div class="about-info">
-                            <div class="info-item">
-                                <i class="fas fa-user"></i>
-                                <span>Emad Siddig</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-envelope"></i>
-                                <span>emadosiddig@gmail.com</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Rwanda</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span>Full-Stack Web Developer</span>
-                            </div>
-                        </div>
-                        <a href="assets/CV.pdf" class="btn btn-primary">Download CV</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      <nav class="side-nav" aria-label="Primary">
+        <a href="#home" class="is-active" data-nav><span class="nav-ico" aria-hidden="true">⌂</span> Home</a>
+        <a href="#about" data-nav><span class="nav-ico" aria-hidden="true">◎</span> About</a>
+        <a href="#services" data-nav><span class="nav-ico" aria-hidden="true">▦</span> Services</a>
+        <a href="#work" data-nav><span class="nav-ico" aria-hidden="true">▣</span> Works</a>
+        <a href="#skills" data-nav><span class="nav-ico" aria-hidden="true">◈</span> Skills</a>
+        <a href="#contact" data-nav><span class="nav-ico" aria-hidden="true">✉</span> Contact</a>
+      </nav>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center">
-                        <h2>My <span class="accent">Skills</span></h2>
-                        <p class="section-subtitle">Technologies I work with</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <!-- Skill Item 1 -->
-                <div class="col-md-6 mb-4">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span class="skill-name">HTML5 & CSS3</span>
-                            <span class="skill-percentage">95%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 0%" data-width="95%"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Skill Item 2 -->
-                <div class="col-md-6 mb-4">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span class="skill-name">JavaScript</span>
-                            <span class="skill-percentage">85%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 0%" data-width="85%"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Skill Item 3 -->
-                <div class="col-md-6 mb-4">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span class="skill-name">React.js</span>
-                            <span class="skill-percentage">80%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 0%" data-width="80%"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Skill Item 4 -->
-                <div class="col-md-6 mb-4">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span class="skill-name">Python</span>
-                            <span class="skill-percentage">90%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 0%" data-width="90%"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Skill Item 5 -->
-                <div class="col-md-6 mb-4">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span class="skill-name">c/c++</span>
-                            <span class="skill-percentage">85%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 0%" data-width="75%"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Skill Item 6 -->
-                <div class="col-md-6 mb-4">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span class="skill-name">Database (SQL/NoSQL)</span>
-                            <span class="skill-percentage">80%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 0%" data-width="80%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="sidebar-foot">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">
+          <span class="moon">☾</span><span class="sun">☀</span>
+          Theme
+        </button>
+        <a class="cv-link" href="assets/CV.pdf" download>Download CV</a>
+      </div>
+    </aside>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center">
-                        <h2>My <span class="accent">Projects</span></h2>
-                        <p class="section-subtitle">Some of my recent work</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <!-- Project 1 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <div class="project-image">
-                            
-                            <div class="project-overlay">
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h4>University Website</h4>
-                            <p>A full university site have all the futures and services with online apply.</p>
-                            <div class="project-tags">
-                                <span>html5</span>
-                                <span>css</span>
-                                <span>javascript</span>
-                            </div>
-                            <div class="project-buttons">
-                                <a href="https://github.com/Emadsiddig/University-website" class="btn btn-sm btn-outline"><i class="fab fa-github"></i> Code</a>
-                                <a href="https://emadsiddig.github.io/University-website/" class="btn btn-sm btn-primary"><i class="fas fa-external-link-alt"></i> Live</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <div class="project-overlay">
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h4>Account-Management-System</h4>
-                            <p>A productivity application for managing tasks, deadlines, and team collaboration with real-time updates.</p>
-                            <div class="project-tags">
-                                <span>C LANGUGE</span>
-                             
-                            </div>
-                            <div class="project-buttons">
-                                <a href="https://github.com/Emadsiddig/Account-Management-System-in-C" class="btn btn-sm btn-outline"><i class="fab fa-github"></i> Code</a>
-                                <a href="https://github.com/Emadsiddig/Account-Management-System-in-C" class="btn btn-sm btn-primary"><i class="fas fa-external-link-alt"></i> Live</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <div class="project-overlay">
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h4>Portfolio Website</h4>
-                            <p>A responsive personal portfolio website with modern design, animations, and contact form.</p>
-                            <div class="project-tags">
-                                <span>HTML5</span>
-                                <span>CSS3</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-buttons">
-                                <a href="https://github.com/Emadsiddig/portfolio" class="btn btn-sm btn-outline"><i class="fab fa-github"></i> Code</a>
-                                <a href="https://emadsiddig.github.io/portfolio/" class="btn btn-sm btn-primary"><i class="fas fa-external-link-alt"></i> Live</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="main-wrap">
+      <header class="mobile-bar">
+        <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="sidebar" aria-label="Open menu">☰</button>
+        <a class="logo" href="#home">Emad<span>.</span></a>
+        <a class="btn btn-cyan btn-sm" href="#contact">Hire Me</a>
+      </header>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center">
-                        <h2>My <span class="accent">Services</span></h2>
-                        <p class="section-subtitle">What I can do for you</p>
-                    </div>
+      <main id="main">
+        <!-- HOME / DASHBOARD -->
+        <section class="panel home-panel" id="home">
+          <div class="dash-grid">
+            <article class="card hero-card">
+              <div class="hero-card-media">
+                <img src="assets/emad-bw.jpg" alt="Black and white portrait of Emad Siddig" width="769" height="1024" fetchpriority="high">
+              </div>
+              <div class="hero-card-copy">
+                <p class="eyebrow">Available for projects</p>
+                <h1>Hey there, I'm <span>Emad Siddig</span></h1>
+                <p class="lede">Full-Stack JavaScript Developer &amp; creative problem-solver based in Rwanda. Trainee at The Gym — shipping clean UIs, REST APIs, and solid systems.</p>
+                <div class="hero-cta-row">
+                  <a class="btn btn-cyan" href="#contact">Hire Me Now <span aria-hidden="true">→</span></a>
+                  <a class="btn btn-ghost" href="#work">View Works</a>
                 </div>
-            </div>
-            <div class="row">
-                <!-- Service 1 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3>Web Development</h3>
-                        <p>Building modern, responsive, and performant websites using the latest technologies and best practices.</p>
-                    </div>
+                <div class="seen-row">
+                  <p>Built with</p>
+                  <div class="seen-logos">
+                    <span>JavaScript</span><span>React</span><span>Node.js</span><span>PostgreSQL</span><span>GitHub</span>
+                  </div>
                 </div>
-                <!-- Service 2 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3>Full-Stack Development</h3>
-                        <p>Creating end-to-end web applications with robust backends and intuitive frontends.</p>
-                    </div>
-                </div>
-                <!-- Service 3 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3>Responsive Design</h3>
-                        <p>Ensuring your website looks great on all devices, from mobile phones to desktop computers.</p>
-                    </div>
-                </div>
-                <!-- Service 4 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3>Database Design</h3>
-                        <p>Designing and optimizing databases for efficient data storage and retrieval.</p>
-                    </div>
-                </div>
-                <!-- Service 5 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-bug"></i>
-                        </div>
-                        <h3>Bug Fixing</h3>
-                        <p>Identifying and fixing bugs to ensure your application runs smoothly and efficiently.</p>
-                    </div>
-                </div>
-                <!-- Service 6 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3>Performance Optimization</h3>
-                        <p>Optimizing your application for better performance, faster load times, and improved user experience.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+              </div>
+            </article>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center">
-                        <h2>Contact <span class="accent">Me</span></h2>
-                        <p class="section-subtitle">Let's work together</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="contact-wrapper">
-                        <div class="row">
-                            <div class="col-lg-5 mb-4 mb-lg-0">
-                                <div class="contact-info">
-                                    <h3>Get In Touch</h3>
-                                    <p>Feel free to contact me if you have any questions or want to work together.</p>
-                                    <div class="contact-item">
-                                        <i class="fas fa-envelope"></i>
-                                        <div>
-                                            <h5>Email</h5>
-                                            <p>emadosiddig@gmail.com</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-item">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <div>
-                                            <h5>Location</h5>
-                                            <p>Rwnda</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-social">
-                                        <a href="https://github.com/Emadsiddig" class="social-link"><i class="fab fa-github"></i></a>
-                                         <a href="https://www.linkedin.com/in/emad-siddig-10234535b?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                                          <a href="https://x.com/omdasiddig1" class="social-link"><i class="fab fa-twitter"></i></a>
-                                       <a href="https://www.instagram.com/omda_wadsiddig?igsh=MTIzenNkampoNjd5bA==" class="social-link"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-7">
-<form class="contact-form" id="contactForm" action="https://formspree.io/f/mqeddvbj" method="POST">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="subject" placeholder="Subject" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                            <div class="form-group">
-                                                <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button type="submit" class="btn btn-primary">Send Message</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <article class="card toolkit-card" id="skills">
+              <div class="card-head">
+                <h2>My Creative Toolkit</h2>
+                <p>The stack I use to design, build, and ship.</p>
+              </div>
+              <div class="tool-rings">
+                <div class="ring" style="--p:92"><span>92%</span><small>JavaScript</small></div>
+                <div class="ring" style="--p:88"><span>88%</span><small>Node.js</small></div>
+                <div class="ring" style="--p:85"><span>85%</span><small>React</small></div>
+                <div class="ring" style="--p:82"><span>82%</span><small>PostgreSQL</small></div>
+              </div>
+            </article>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="footer-content">
-                        <h3>Emad Siddig</h3>
-                        <p>Full-Stack Web Developer & Aspiring Software Developer</p>
-                        <div class="footer-social">
-                           <a href="https://github.com/Emadsiddig" class="social-link"><i class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/emad-siddig-10234535b?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://x.com/omdasiddig1" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.instagram.com/omda_wadsiddig?igsh=MTIzenNkampoNjd5bA==" class="social-link"><i class="fab fa-instagram"></i></a>
-                        </div>
-                        <div class="footer-bottom">
-                            <p>&copy; 2026 Emad Siddig. All Rights Reserved.</p>
-                        </div>
-                    </div>
-                </div>
+            <article class="card skills-strip">
+              <div class="skill-pill">
+                <div class="skill-top"><strong>HTML &amp; CSS</strong><span>95%</span></div>
+                <div class="bar"><i style="--w:95%"></i></div>
+              </div>
+              <div class="skill-pill">
+                <div class="skill-top"><strong>REST APIs</strong><span>86%</span></div>
+                <div class="bar"><i style="--w:86%"></i></div>
+              </div>
+              <div class="skill-pill">
+                <div class="skill-top"><strong>Git &amp; GitHub</strong><span>90%</span></div>
+                <div class="bar"><i style="--w:90%"></i></div>
+              </div>
+              <div class="skill-pill">
+                <div class="skill-top"><strong>Python</strong><span>88%</span></div>
+                <div class="bar"><i style="--w:88%"></i></div>
+              </div>
+              <div class="skill-pill">
+                <div class="skill-top"><strong>C / C++</strong><span>80%</span></div>
+                <div class="bar"><i style="--w:80%"></i></div>
+              </div>
+              <div class="skill-pill">
+                <div class="skill-top"><strong>System Design</strong><span>78%</span></div>
+                <div class="bar"><i style="--w:78%"></i></div>
+              </div>
+            </article>
+
+            <article class="card services-card" id="services">
+              <div class="card-head">
+                <h2>Services</h2>
+                <p>What I can take on for you.</p>
+              </div>
+              <div class="service-acc" id="serviceAcc">
+                <button type="button" class="service-item is-open" data-service>
+                  <span class="num">001</span>
+                  <span class="svc-body">
+                    <strong>Web Development</strong>
+                    <span class="svc-detail">Modern responsive sites with performance and accessibility built in.</span>
+                    <span class="tags"><i>HTML</i><i>CSS</i><i>JavaScript</i></span>
+                  </span>
+                  <span class="svc-arrow" aria-hidden="true">↗</span>
+                </button>
+                <button type="button" class="service-item" data-service>
+                  <span class="num">002</span>
+                  <span class="svc-body">
+                    <strong>Full-Stack JavaScript Apps</strong>
+                    <span class="svc-detail">End-to-end products: React frontends, Node APIs, and PostgreSQL data.</span>
+                    <span class="tags"><i>React</i><i>Node.js</i><i>PostgreSQL</i></span>
+                  </span>
+                  <span class="svc-arrow" aria-hidden="true">↗</span>
+                </button>
+                <button type="button" class="service-item" data-service>
+                  <span class="num">003</span>
+                  <span class="svc-body">
+                    <strong>REST APIs &amp; Data</strong>
+                    <span class="svc-detail">Clean endpoints, auth-aware flows, and schemas that stay clear.</span>
+                    <span class="tags"><i>Express</i><i>REST</i><i>SQL</i></span>
+                  </span>
+                  <span class="svc-arrow" aria-hidden="true">↗</span>
+                </button>
+                <button type="button" class="service-item" data-service>
+                  <span class="num">004</span>
+                  <span class="svc-body">
+                    <strong>Fixes &amp; Performance</strong>
+                    <span class="svc-detail">Debug, harden, and speed up what you already have.</span>
+                    <span class="tags"><i>QA</i><i>Optimization</i></span>
+                  </span>
+                  <span class="svc-arrow" aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </article>
+
+            <article class="card stats-card">
+              <div class="stat"><strong>6+</strong><span>Featured projects</span></div>
+              <div class="stat"><strong>2nd</strong><span>Cursor Kigali Hackathon</span></div>
+              <div class="stat"><strong>FS</strong><span>JavaScript stack</span></div>
+              <div class="stat"><strong>Gym</strong><span>Dev trainee program</span></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="panel" id="about">
+          <div class="panel-head">
+            <p class="eyebrow">About</p>
+            <h2>Software that works hard and stays clear.</h2>
+          </div>
+          <div class="card about-card">
+            <div class="about-photo">
+              <img src="assets/emad-bw.jpg" alt="Emad Siddig portrait in black and white" width="400" height="520" loading="lazy">
             </div>
-        </div>
-    </footer>
+            <div class="about-copy">
+              <p>I'm Emad Siddig — a Full-Stack JavaScript Developer who turns ideas into reliable products. I work across frontend and backend: interfaces people trust, REST APIs that stay consistent, and databases that hold up under real use.</p>
+              <p>I'm currently a software development trainee at <strong>The Gym</strong>, sharpening how I ship with teams — from system design and creative software solutions to production-minded JavaScript.</p>
+              <ul class="fact-list">
+                <li><span>Role</span> Full-Stack JavaScript Developer</li>
+                <li><span>Program</span> The Gym — Software Development Trainee</li>
+                <li><span>Email</span> <a href="mailto:emadosiddig@gmail.com">emadosiddig@gmail.com</a></li>
+                <li><span>Location</span> Rwanda</li>
+              </ul>
+              <a class="btn btn-cyan" href="assets/CV.pdf" download>Download CV</a>
+            </div>
+          </div>
+        </section>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+        <!-- WORK -->
+        <section class="panel" id="work">
+          <div class="panel-head">
+            <p class="eyebrow">Selected works</p>
+            <h2>Projects that prove the stack.</h2>
+          </div>
+          <div class="work-grid">
+            <article class="card work-card work-featured">
+              <div class="work-badge">01 · Hackathon</div>
+              <h3>Pixel Hills</h3>
+              <p>Interactive STEM lab for Chemistry, Biology &amp; Physics — 2nd place at Cursor Kigali Hackathon.</p>
+              <dl>
+                <div><dt>Problem</dt><dd>Science stays abstract when students only read about it.</dd></div>
+                <div><dt>Solution</dt><dd>React + TypeScript lab with simulations and study dashboard.</dd></div>
+                <div><dt>Result</dt><dd>Awarded 2nd place; live demo for learners.</dd></div>
+              </dl>
+              <div class="tags"><i>React</i><i>TypeScript</i><i>Vite</i></div>
+              <div class="work-links">
+                <a href="https://github.com/Omda-Si/hacthon_project" target="_blank" rel="noopener noreferrer">Code</a>
+                <a href="https://wondrous-sopapillas-dc4d45.netlify.app/" target="_blank" rel="noopener noreferrer">Live</a>
+              </div>
+            </article>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JS -->
-    <script src="script.js"></script>
+            <article class="card work-card">
+              <div class="work-badge">02 · Product</div>
+              <h3>RoOby Shop</h3>
+              <p>Arabic RTL sweets storefront with admin tools and WhatsApp ordering.</p>
+              <dl>
+                <div><dt>Problem</dt><dd>Local shop needed orders without card checkout complexity.</dd></div>
+                <div><dt>Solution</dt><dd>Shop + admin: menu, news, categories, WhatsApp handoff.</dd></div>
+                <div><dt>Result</dt><dd>Live storefront customers can order from today.</dd></div>
+              </dl>
+              <div class="tags"><i>JavaScript</i><i>Node.js</i><i>RTL</i></div>
+              <div class="work-links">
+                <a href="https://github.com/Omda-Si/RoOby-Shop" target="_blank" rel="noopener noreferrer">Code</a>
+                <a href="https://roobysweets.netlify.app" target="_blank" rel="noopener noreferrer">Live</a>
+              </div>
+            </article>
+
+            <article class="card work-card">
+              <div class="work-badge">03 · Full-stack</div>
+              <h3>Secrets</h3>
+              <p>Private vault with email/Google auth, sessions, and PostgreSQL.</p>
+              <dl>
+                <div><dt>Problem</dt><dd>Auth demos often skip production concerns.</dd></div>
+                <div><dt>Solution</dt><dd>Node, Express, Passport, bcrypt, Render deploy.</dd></div>
+                <div><dt>Result</dt><dd>Working full-stack auth online.</dd></div>
+              </dl>
+              <div class="tags"><i>Node.js</i><i>PostgreSQL</i><i>REST</i></div>
+              <div class="work-links">
+                <a href="https://github.com/Omda-Si/Secrets" target="_blank" rel="noopener noreferrer">Code</a>
+                <a href="https://secrets-knfj.onrender.com/" target="_blank" rel="noopener noreferrer">Live</a>
+              </div>
+            </article>
+
+            <article class="card work-card">
+              <div class="work-badge">04 · Web</div>
+              <h3>University Website</h3>
+              <p>Responsive university portal with library, students, and apply flow.</p>
+              <dl>
+                <div><dt>Problem</dt><dd>Campus info was scattered across static pages.</dd></div>
+                <div><dt>Solution</dt><dd>Multi-page HTML/CSS/JS site ready for backend wiring.</dd></div>
+                <div><dt>Result</dt><dd>Clear front door for programs and applicants.</dd></div>
+              </dl>
+              <div class="tags"><i>HTML5</i><i>CSS3</i><i>JavaScript</i></div>
+              <div class="work-links">
+                <a href="https://github.com/Omda-Si/University-website" target="_blank" rel="noopener noreferrer">Code</a>
+                <a href="https://emadsiddig.github.io/University-website/" target="_blank" rel="noopener noreferrer">Live</a>
+              </div>
+            </article>
+
+            <article class="card work-card">
+              <div class="work-badge">05 · React</div>
+              <h3>Quiz Application</h3>
+              <p>Interactive quiz with explanations, progress, and instant feedback.</p>
+              <dl>
+                <div><dt>Problem</dt><dd>Learners need more than right/wrong.</dd></div>
+                <div><dt>Solution</dt><dd>React quiz with navigation and explanations.</dd></div>
+                <div><dt>Result</dt><dd>Clear learning UX on every screen size.</dd></div>
+              </dl>
+              <div class="tags"><i>React</i><i>JavaScript</i><i>Vite</i></div>
+              <div class="work-links">
+                <a href="https://github.com/Omda-Si/Quiz-Application-" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </article>
+
+            <article class="card work-card">
+              <div class="work-badge">06 · Systems</div>
+              <h3>Account Management</h3>
+              <p>C-language account system focused on structured, reliable operations.</p>
+              <dl>
+                <div><dt>Problem</dt><dd>Need solid fundamentals before frameworks.</dd></div>
+                <div><dt>Solution</dt><dd>Account logic in C with clear data workflows.</dd></div>
+                <div><dt>Result</dt><dd>Stronger systems thinking for full-stack work.</dd></div>
+              </dl>
+              <div class="tags"><i>C</i><i>Systems</i></div>
+              <div class="work-links">
+                <a href="https://github.com/Omda-Si/Account-Management-System-in-C" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- CONTACT — email only -->
+        <section class="panel" id="contact">
+          <div class="panel-head">
+            <p class="eyebrow">Contact</p>
+            <h2>Get in touch by email.</h2>
+          </div>
+          <article class="card contact-info contact-only">
+            <h3>Contact me</h3>
+            <p>Want to work together or ask a question? Email me directly — that’s the best way to reach me.</p>
+            <a class="mail" href="mailto:emadosiddig@gmail.com">emadosiddig@gmail.com</a>
+            <a class="btn btn-cyan mail-cta" href="mailto:emadosiddig@gmail.com">Send me an email</a>
+            <p class="loc">Rwanda</p>
+            <div class="profile-social large">
+              <a href="https://github.com/Omda-Si" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/emad-siddig-10234535b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://x.com/omdasiddig1" target="_blank" rel="noopener noreferrer">X</a>
+              <a href="https://www.instagram.com/omda_wadsiddig" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+          </article>
+        </section>
+
+        <footer class="site-footer">
+          <p>© 2026 Emad Siddig · Full-Stack JavaScript Developer</p>
+          <a href="#home">Back to top</a>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,265 +1,138 @@
 /**
- * Portfolio Website JavaScript
- * Author: Emad Siddig
+ * Emad Siddig — Agency dashboard portfolio
  */
+(function () {
+  const doc = document.documentElement;
+  const sidebar = document.getElementById("sidebar");
+  const menuBtn = document.getElementById("menuBtn");
+  const backdrop = document.getElementById("backdrop");
+  const themeToggle = document.getElementById("themeToggle");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-document.addEventListener('DOMContentLoaded', function() {
-    // ==========================================
-    // Typing Animation
-    // ==========================================
-    const typingText = document.querySelector('.typing-text');
-    const textArray = [
-        'Software Developer',
-        'Full-Stack Developer',
-        'Web Designer',
-        'Problem Solver'
-    ];
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
+  // Theme
+  const stored = localStorage.getItem("emad-theme");
+  const preferLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+  setTheme(stored || (preferLight ? "light" : "dark"));
 
-    function typeEffect() {
-        const currentText = textArray[textIndex];
-        
-        if (isDeleting) {
-            typingText.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 50;
-        } else {
-            typingText.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 100;
-        }
+  function setTheme(theme) {
+    doc.setAttribute("data-theme", theme);
+    localStorage.setItem("emad-theme", theme);
+    themeToggle?.setAttribute(
+      "aria-label",
+      theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+    );
+  }
 
-        if (!isDeleting && charIndex === currentText.length) {
-            isDeleting = true;
-            typingSpeed = 2000; // Pause at the end
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % textArray.length;
-            typingSpeed = 500; // Pause before typing next word
-        }
+  themeToggle?.addEventListener("click", () => {
+    setTheme(doc.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
 
-        setTimeout(typeEffect, typingSpeed);
-    }
+  // Mobile sidebar
+  function openSidebar(open) {
+    sidebar?.classList.toggle("is-open", open);
+    menuBtn?.setAttribute("aria-expanded", String(open));
+    menuBtn?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (backdrop) backdrop.hidden = !open;
+  }
 
-    // Start typing animation
-    typeEffect();
+  menuBtn?.addEventListener("click", () => {
+    openSidebar(!sidebar?.classList.contains("is-open"));
+  });
+  backdrop?.addEventListener("click", () => openSidebar(false));
 
-    // ==========================================
-    // Sticky Navbar
-    // ==========================================
-    const navbar = document.querySelector('.navbar');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+  document.querySelectorAll("[data-nav]").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth < 1100) openSidebar(false);
+    });
+  });
+
+  // Smooth anchors
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      const offset = window.innerWidth < 1100 ? 72 : 16;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+  });
+
+  // Active nav
+  const sections = document.querySelectorAll("main section[id]");
+  const navLinks = document.querySelectorAll("[data-nav]");
+  function onScroll() {
+    let current = "home";
+    sections.forEach((s) => {
+      if (window.scrollY >= s.offsetTop - 180) current = s.id;
+    });
+    navLinks.forEach((l) => {
+      l.classList.toggle("is-active", l.getAttribute("href") === `#${current}`);
+    });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Services accordion
+  document.querySelectorAll("[data-service]").forEach((item) => {
+    item.addEventListener("click", () => {
+      document.querySelectorAll("[data-service]").forEach((el) => {
+        if (el !== item) el.classList.remove("is-open");
+      });
+      item.classList.toggle("is-open");
+    });
+  });
+
+  // Skill bars on view
+  const bars = document.querySelectorAll(".bar");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-on");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+    bars.forEach((b) => io.observe(b));
+  } else {
+    bars.forEach((b) => b.classList.add("is-on"));
+  }
+
+  // Motion
+  function initMotion() {
+    if (typeof gsap === "undefined" || reduceMotion) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".hero-card", { opacity: 0, y: 28, duration: 0.8, ease: "power3.out" });
+    gsap.from(".toolkit-card, .skills-strip, .services-card, .stats-card", {
+      opacity: 0,
+      y: 24,
+      duration: 0.7,
+      stagger: 0.1,
+      delay: 0.15,
+      ease: "power3.out",
     });
 
-    // ==========================================
-    // Active Navigation Link on Scroll
-    // ==========================================
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    window.addEventListener('scroll', function() {
-        let current = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (scrollY >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').slice(1) === current) {
-                link.classList.add('active');
-            }
-        });
+    gsap.utils.toArray(".work-card, .about-card, .contact-only").forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: "top 88%" },
+        opacity: 0,
+        y: 36,
+        duration: 0.7,
+        ease: "power3.out",
+      });
     });
+  }
 
-    // ==========================================
-    // Smooth Scrolling for Navigation Links
-    // ==========================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const navbarHeight = navbar.offsetHeight;
-                const targetPosition = targetElement.offsetTop - navbarHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-            
-            // Close mobile menu if open
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse.classList.contains('show')) {
-                navbarCollapse.classList.remove('show');
-            }
-        });
-    });
-
-    // ==========================================
-    // Scroll Animations (Fade In on Scroll)
-    // ==========================================
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    fadeElements.forEach(el => observer.observe(el));
-
-    // Add fade-in class to sections for scroll animations
-    const sectionsToAnimate = document.querySelectorAll('#about, #skills, #projects, #services, #contact');
-    sectionsToAnimate.forEach(section => {
-        section.classList.add('fade-in');
-    });
-
-    // ==========================================
-    // Skills Progress Bar Animation
-    // ==========================================
-    const skillBars = document.querySelectorAll('.progress-bar');
-    
-    const skillObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const progressBar = entry.target;
-                const width = progressBar.getAttribute('data-width');
-                progressBar.style.width = width + '%';
-                observer.unobserve(progressBar);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    skillBars.forEach(bar => skillObserver.observe(bar));
-
-    // ==========================================
-    // Scroll to Top Button
-    // ==========================================
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 500) {
-            scrollToTopBtn.classList.add('visible');
-        } else {
-            scrollToTopBtn.classList.remove('visible');
-        }
-    });
-
-    scrollToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // ==========================================
-    // Form Submission Handler
-    // ==========================================
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            // Simple validation
-            if (name && email && subject && message) {
-                // Show success message (you can customize this)
-                alert('Thank you for your message! I will get back to you soon.');
-                
-                // Reset form
-                this.reset();
-            }
-        });
-    }
-
-    // ==========================================
-    // Navbar Toggler Close on Link Click (Mobile)
-    // ==========================================
-    const navItems = document.querySelectorAll('.nav-item');
-    
-    navItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse.classList.contains('show')) {
-                navbarCollapse.classList.remove('show');
-            }
-        });
-    });
-
-    // ==========================================
-    // Project Card Hover Effect Enhancement
-    // ==========================================
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    projectCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-
-    // ==========================================
-    // Service Card Animation
-    // ==========================================
-    const serviceCards = document.querySelectorAll('.service-card');
-    
-    serviceCards.forEach((card, index) => {
-        card.style.animationDelay = (index * 0.1) + 's';
-    });
-
-    // ==========================================
-    // Preloader (Optional)
-    // ==========================================
-    window.addEventListener('load', function() {
-        document.body.style.opacity = '1';
-    });
-
-    // Set initial opacity for smooth page load
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-
-    // ==========================================
-    // Console Welcome Message
-    // ==========================================
-    console.log('%c Welcome to Emad Siddig\'s Portfolio ', 'background: #00d4ff; color: #000; padding: 10px; font-size: 16px; font-weight: bold;');
-    console.log('%c Feel free to explore the code! ', 'background: #1a1a2e; color: #fff; padding: 5px;');
-});
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMotion);
+  } else {
+    initMotion();
+  }
+})();
