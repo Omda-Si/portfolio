@@ -4,6 +4,8 @@ Welcome to my personal portfolio! This website showcases who I am, what I do, an
 
 🔗 **Live Demo:** https://emadsiddig.github.io/portfolio/ :contentReference[oaicite:2]{index=2}
 
+🌐 **Portfolio:** http://omda-si.github.io/portfolio/
+
 ---
 
 ## 🚀 About Me
