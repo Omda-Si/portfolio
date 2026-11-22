@@ -1,91 +1,39 @@
-# Emad Siddig | Full-Stack Web Developer & Aspiring Software Developer 🌐
+# Emad Siddig
 
-Welcome to my personal portfolio! This website showcases who I am, what I do, and some of my projects. It’s designed to be a clean, modern, and responsive representation of my skills and experience. :contentReference[oaicite:1]{index=1} 
+Personal portfolio for Emad Siddig, a full-stack JavaScript developer based in Rwanda and a software development trainee at The Gym.
 
-🌐 **Live Demo:** http://omda-si.github.io/portfolio/
+Live site: https://omda-si.github.io/portfolio/
 
----
+Email: emadosiddig@gmail.com
 
-## 🚀 About Me
+The visual system is documented in [DESIGN.md](DESIGN.md).
 
-Hi! I’m **Emad Siddig**, a passionate Full-Stack Web Developer and aspiring Software Developer. I enjoy crafting beautiful, efficient, and user-friendly digital solutions. I’m continually learning and improving my skills to build applications that solve real problems. :contentReference[oaicite:3]{index=3}
+## Work on this site
 
-📍 Based in Rwanda  
-📧 emadosiddig@gmail.com :contentReference[oaicite:4]{index=4}
+| Project | What it is | Source | Live |
+| --- | --- | --- | --- |
+| Pixel Hills | Interactive lab for chemistry, biology, and physics. 2nd place at the Cursor Kigali Hackathon. | [Visual-Lab](https://github.com/Omda-Si/Visual-Lab) | [Netlify](https://wondrous-sopapillas-dc4d45.netlify.app/) |
+| RoOby Shop | Arabic, right-to-left sweets store with an admin and WhatsApp ordering. | [RoOby-Shop](https://github.com/Omda-Si/RoOby-Shop) | [Netlify](https://roobysweets.netlify.app) |
+| Secrets | Anonymous secrets app with email and Google sign-in, sessions, and PostgreSQL. | [Secrets](https://github.com/Omda-Si/Secrets) | [Render](https://secrets-knfj.onrender.com/) |
+| University website | Responsive site for the University of Sudan, with library, student, and application sections. | [University-website](https://github.com/Omda-Si/University-website) | [GitHub Pages](https://omda-si.github.io/University-website/) |
+| Quiz application | React quiz with navigation, feedback, and explanations. No hosted demo. | [Quiz-Application-](https://github.com/Omda-Si/Quiz-Application-) | |
+| Account management | Account system in C, stored in `account.dat`. | [Account-Management-System-in-C](https://github.com/Omda-Si/Account-Management-System-in-C) | |
 
----
+## Stack
 
-## 💻 Technologies & Skills
+Static HTML, CSS, and JavaScript. No build step. GitHub Pages serves the repository root.
 
-Technologies I work with: :contentReference[oaicite:5]{index=5}
+Day and night colors follow the theme switch, or the system preference on a first visit.
 
-| Technology | Proficiency |
-|------------|-------------|
-| HTML5 & CSS3 | 95% |
-| JavaScript | 85% |
-| React.js | 80% |
-| Python | 90% |
-| C / C++ | 85% |
-| Databases (SQL/NoSQL) | 80% |
+## Skills
 
----
+The skills table on the site is self-rated. The numbers are Emad’s own estimates, not a scored assessment.
 
-## 📂 Projects
+## Contact
 
-Here are some featured projects from the portfolio section: :contentReference[oaicite:6]{index=6}
-
-### 🔹 University Website
-
-A full university site with features and services including online applications.  
-**Tech:** HTML5, CSS, JavaScript :contentReference[oaicite:7]{index=7}
-
-
-
----
-
-### 🔹 Account Management System
-
-A productivity application for managing tasks, deadlines, and team collaboration with real-time updates.  
-**Tech:** C language :contentReference[oaicite:8]{index=8}
-
-
----
-
-### 🔹 Responsive Portfolio Website
-
-A modern, responsive personal portfolio with animations and contact form.  
-**Tech:** HTML5, CSS3, JavaScript :contentReference[oaicite:9]{index=9}
-
----
-
-## 🛠 Services I Offer
-
-I provide a range of development services: :contentReference[oaicite:10]{index=10}
-
-- **Web Development** — Modern, responsive sites.  
-- **Full-Stack Development** — Frontend + backend solutions.  
-- **Responsive & Mobile-Friendly Design**.  
-- **Database Design** — SQL & NoSQL.  
-- **Bug Fixing & Performance Optimization.**
-
----
-
-## 📫 Contact Me
-
-Let’s build something amazing! Feel free to reach out: :contentReference[oaicite:11]{index=11}
-
-- 📧 **Email:** emadosiddig@gmail.com  
-- 📍 **Location:** Rwanda
-
----
-
-## ⭐ License
-
-This project (the portfolio site) is open source and free to use.  
-*Feel free to customize it for your own portfolio or inspiration.*
-
----
-
-## 🙌 Acknowledgements
-
-Thank you for visiting my portfolio page — I hope it gives you a clear picture of my work and capabilities. :contentReference[oaicite:12]{index=12}
+- Email: emadosiddig@gmail.com
+- GitHub: https://github.com/Omda-Si
+- LinkedIn: https://www.linkedin.com/in/emad-siddig-10234535b
+- X: https://x.com/omdasiddig1
+- Instagram: https://www.instagram.com/omda_wadsiddig
+- Location: Rwanda

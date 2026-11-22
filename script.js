@@ -1,138 +1,159 @@
-/**
- * Emad Siddig — Agency dashboard portfolio
- */
 (function () {
-  const doc = document.documentElement;
-  const sidebar = document.getElementById("sidebar");
-  const menuBtn = document.getElementById("menuBtn");
-  const backdrop = document.getElementById("backdrop");
-  const themeToggle = document.getElementById("themeToggle");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var doc = document.documentElement;
+  var menuBtn = document.getElementById("menuBtn");
+  var themeToggle = document.getElementById("themeToggle");
+  var main = document.getElementById("main");
+  var footer = document.querySelector(".site-footer");
+  var navLinks = document.querySelectorAll("#primary-nav a");
+  var sections = document.querySelectorAll("main section[id]");
 
-  // Theme
-  const stored = localStorage.getItem("emad-theme");
-  const preferLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-  setTheme(stored || (preferLight ? "light" : "dark"));
+  doc.classList.add("js");
 
-  function setTheme(theme) {
-    doc.setAttribute("data-theme", theme);
-    localStorage.setItem("emad-theme", theme);
-    themeToggle?.setAttribute(
-      "aria-label",
-      theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+  function reduced() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function applyTheme(theme) {
+    var night = theme !== "light";
+    var next = night ? "dark" : "light";
+    doc.setAttribute("data-theme", next);
+    if (themeToggle) {
+      themeToggle.textContent = night ? "Night on" : "Day on";
+      themeToggle.setAttribute(
+        "aria-label",
+        night
+          ? "Night colors are on. Switch to day colors."
+          : "Day colors are on. Switch to night colors."
+      );
+    }
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", night ? "#10141c" : "#e4eadc");
+  }
+
+  applyTheme(doc.getAttribute("data-theme") === "light" ? "light" : "dark");
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      var next = doc.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      try {
+        localStorage.setItem("emad-theme", next);
+      } catch (err) {}
+      applyTheme(next);
+    });
+  }
+
+  function menuIsOpen() {
+    return doc.classList.contains("menu-open");
+  }
+
+  function visibleFocusable() {
+    return Array.prototype.filter.call(
+      document.querySelectorAll(".site-header a, .site-header button"),
+      function (el) {
+        return el.getClientRects().length > 0;
+      }
     );
   }
 
-  themeToggle?.addEventListener("click", () => {
-    setTheme(doc.getAttribute("data-theme") === "dark" ? "light" : "dark");
-  });
-
-  // Mobile sidebar
-  function openSidebar(open) {
-    sidebar?.classList.toggle("is-open", open);
-    menuBtn?.setAttribute("aria-expanded", String(open));
-    menuBtn?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    if (backdrop) backdrop.hidden = !open;
+  function setInert(on) {
+    if (main) main.inert = on;
+    if (footer) footer.inert = on;
   }
 
-  menuBtn?.addEventListener("click", () => {
-    openSidebar(!sidebar?.classList.contains("is-open"));
-  });
-  backdrop?.addEventListener("click", () => openSidebar(false));
+  function closeMenu(restoreFocus) {
+    doc.classList.remove("menu-open");
+    document.body.style.overflow = "";
+    setInert(false);
+    if (menuBtn) {
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.textContent = "Menu";
+      menuBtn.setAttribute("aria-label", "Open menu");
+      if (restoreFocus) menuBtn.focus();
+    }
+  }
 
-  document.querySelectorAll("[data-nav]").forEach((link) => {
-    link.addEventListener("click", () => {
-      if (window.innerWidth < 1100) openSidebar(false);
-    });
-  });
+  function openMenu() {
+    doc.classList.add("menu-open");
+    document.body.style.overflow = "hidden";
+    setInert(true);
+    if (menuBtn) {
+      menuBtn.setAttribute("aria-expanded", "true");
+      menuBtn.textContent = "Close";
+      menuBtn.setAttribute("aria-label", "Close menu");
+    }
+    var items = visibleFocusable();
+    var firstLink = document.querySelector("#primary-nav a");
+    if (firstLink && firstLink.getClientRects().length) firstLink.focus();
+    else if (items[0]) items[0].focus();
+  }
 
-  // Smooth anchors
-  document.querySelectorAll('a[href^="#"]').forEach((a) => {
-    a.addEventListener("click", (e) => {
-      const id = a.getAttribute("href");
-      if (!id || id === "#") return;
-      const el = document.querySelector(id);
-      if (!el) return;
-      e.preventDefault();
-      const offset = window.innerWidth < 1100 ? 72 : 16;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
-    });
-  });
-
-  // Active nav
-  const sections = document.querySelectorAll("main section[id]");
-  const navLinks = document.querySelectorAll("[data-nav]");
-  function onScroll() {
-    let current = "home";
-    sections.forEach((s) => {
-      if (window.scrollY >= s.offsetTop - 180) current = s.id;
-    });
-    navLinks.forEach((l) => {
-      l.classList.toggle("is-active", l.getAttribute("href") === `#${current}`);
+  if (menuBtn) {
+    menuBtn.addEventListener("click", function () {
+      if (menuIsOpen()) closeMenu(true);
+      else openMenu();
     });
   }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
 
-  // Services accordion
-  document.querySelectorAll("[data-service]").forEach((item) => {
-    item.addEventListener("click", () => {
-      document.querySelectorAll("[data-service]").forEach((el) => {
-        if (el !== item) el.classList.remove("is-open");
+  document.addEventListener("keydown", function (event) {
+    if (!menuIsOpen()) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeMenu(true);
+      return;
+    }
+    if (event.key !== "Tab") return;
+    var items = visibleFocusable();
+    if (!items.length) return;
+    var first = items[0];
+    var last = items[items.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth >= 800 && menuIsOpen()) closeMenu(false);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var id = link.getAttribute("href");
+      if (!id || id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      event.preventDefault();
+      if (menuIsOpen()) closeMenu(false);
+      target.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "start" });
+      if (target === main) {
+        if (!main.hasAttribute("tabindex")) main.setAttribute("tabindex", "-1");
+        main.focus({ preventScroll: true });
+      }
+      if (history.replaceState) history.replaceState(null, "", id);
+    });
+  });
+
+  function markCurrent() {
+    var line = 120;
+    var current = "top";
+    var atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+    if (atBottom) {
+      current = sections[sections.length - 1].id;
+    } else {
+      sections.forEach(function (section) {
+        var box = section.getBoundingClientRect();
+        if (box.top <= line && box.bottom > line) current = section.id;
       });
-      item.classList.toggle("is-open");
-    });
-  });
-
-  // Skill bars on view
-  const bars = document.querySelectorAll(".bar");
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-on");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.35 }
-    );
-    bars.forEach((b) => io.observe(b));
-  } else {
-    bars.forEach((b) => b.classList.add("is-on"));
-  }
-
-  // Motion
-  function initMotion() {
-    if (typeof gsap === "undefined" || reduceMotion) return;
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.from(".hero-card", { opacity: 0, y: 28, duration: 0.8, ease: "power3.out" });
-    gsap.from(".toolkit-card, .skills-strip, .services-card, .stats-card", {
-      opacity: 0,
-      y: 24,
-      duration: 0.7,
-      stagger: 0.1,
-      delay: 0.15,
-      ease: "power3.out",
-    });
-
-    gsap.utils.toArray(".work-card, .about-card, .contact-only").forEach((el) => {
-      gsap.from(el, {
-        scrollTrigger: { trigger: el, start: "top 88%" },
-        opacity: 0,
-        y: 36,
-        duration: 0.7,
-        ease: "power3.out",
-      });
+    }
+    navLinks.forEach(function (link) {
+      if (link.getAttribute("href") === "#" + current) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initMotion);
-  } else {
-    initMotion();
-  }
+  window.addEventListener("scroll", markCurrent, { passive: true });
+  markCurrent();
 })();
