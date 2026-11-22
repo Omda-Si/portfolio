@@ -1,10 +1,8 @@
 # Emad Siddig | Full-Stack Web Developer & Aspiring Software Developer 🌐
 
-Welcome to my personal portfolio! This website showcases who I am, what I do, and some of my projects. It’s designed to be a clean, modern, and responsive representation of my skills and experience. :contentReference[oaicite:1]{index=1}
+Welcome to my personal portfolio! This website showcases who I am, what I do, and some of my projects. It’s designed to be a clean, modern, and responsive representation of my skills and experience. :contentReference[oaicite:1]{index=1} 
 
-🔗 **Live Demo:** https://emadsiddig.github.io/portfolio/ :contentReference[oaicite:2]{index=2}
-
-🌐 **Portfolio:** http://omda-si.github.io/portfolio/
+🌐 **Live Demo:** http://omda-si.github.io/portfolio/
 
 ---
 
