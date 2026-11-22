@@ -1,138 +1,122 @@
 /**
- * Emad Siddig — Agency dashboard portfolio
+ * Theme, mobile menu, in-page navigation.
+ * Motion is the menu panel only, and it is disabled when reduced motion is requested.
  */
 (function () {
   const doc = document.documentElement;
-  const sidebar = document.getElementById("sidebar");
   const menuBtn = document.getElementById("menuBtn");
-  const backdrop = document.getElementById("backdrop");
+  const menuLabel = document.getElementById("menuLabel");
+  const panel = document.getElementById("mast-panel");
   const themeToggle = document.getElementById("themeToggle");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const themeState = document.getElementById("themeState");
+  const themeColor = document.getElementById("themeColor");
+  const main = document.getElementById("main");
+  const mobileQuery = window.matchMedia("(max-width: 959px)");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  // Theme
-  const stored = localStorage.getItem("emad-theme");
-  const preferLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-  setTheme(stored || (preferLight ? "light" : "dark"));
-
-  function setTheme(theme) {
+  function applyTheme(theme, persist) {
     doc.setAttribute("data-theme", theme);
-    localStorage.setItem("emad-theme", theme);
-    themeToggle?.setAttribute(
-      "aria-label",
-      theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
-    );
+    if (persist) {
+      try { localStorage.setItem("emad-theme", theme); } catch (e) {}
+    }
+    const dark = theme === "dark";
+    if (themeToggle) themeToggle.setAttribute("aria-checked", String(dark));
+    if (themeState) themeState.textContent = dark ? "On" : "Off";
+    if (themeColor) themeColor.setAttribute("content", dark ? "#13160e" : "#e7e6d4");
   }
 
+  applyTheme(doc.getAttribute("data-theme") === "dark" ? "dark" : "light", false);
+
   themeToggle?.addEventListener("click", () => {
-    setTheme(doc.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    const next = doc.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    applyTheme(next, true);
   });
 
-  // Mobile sidebar
-  function openSidebar(open) {
-    sidebar?.classList.toggle("is-open", open);
-    menuBtn?.setAttribute("aria-expanded", String(open));
-    menuBtn?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    if (backdrop) backdrop.hidden = !open;
+  function setMenu(open) {
+    if (!panel || !menuBtn) return;
+    const mobile = mobileQuery.matches;
+    panel.classList.toggle("is-open", open && mobile);
+    menuBtn.setAttribute("aria-expanded", String(open && mobile));
+    if (menuLabel) menuLabel.textContent = open && mobile ? "Close" : "Menu";
+    document.body.classList.toggle("menu-open", open && mobile);
+    if (open && mobile) {
+      const first = panel.querySelector("a, button");
+      first?.focus();
+    }
   }
 
   menuBtn?.addEventListener("click", () => {
-    openSidebar(!sidebar?.classList.contains("is-open"));
-  });
-  backdrop?.addEventListener("click", () => openSidebar(false));
-
-  document.querySelectorAll("[data-nav]").forEach((link) => {
-    link.addEventListener("click", () => {
-      if (window.innerWidth < 1100) openSidebar(false);
-    });
+    setMenu(!panel.classList.contains("is-open"));
   });
 
-  // Smooth anchors
-  document.querySelectorAll('a[href^="#"]').forEach((a) => {
-    a.addEventListener("click", (e) => {
-      const id = a.getAttribute("href");
+  panel?.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+    if (link && mobileQuery.matches) setMenu(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!panel?.classList.contains("is-open")) return;
+    if (event.key === "Escape") {
+      setMenu(false);
+      menuBtn?.focus();
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const items = [menuBtn, ...panel.querySelectorAll("a, button")].filter(Boolean);
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  mobileQuery.addEventListener("change", () => {
+    if (!mobileQuery.matches) setMenu(false);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (event) => {
+      const id = anchor.getAttribute("href");
       if (!id || id === "#") return;
-      const el = document.querySelector(id);
-      if (!el) return;
-      e.preventDefault();
-      const offset = window.innerWidth < 1100 ? 72 : 16;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+      const target = document.querySelector(id);
+      if (!target) return;
+      event.preventDefault();
+      const focusTarget = target.id === "main"
+        ? target
+        : (target.querySelector("h1, h2, h3") || target);
+      if (focusTarget.tabIndex < 0) focusTarget.tabIndex = -1;
+      focusTarget.focus({ preventScroll: true });
+      const bar = mobileQuery.matches ? 64 : 16;
+      const top = target.getBoundingClientRect().top + window.scrollY - bar;
+      window.scrollTo({ top, behavior: reduceMotion.matches ? "auto" : "smooth" });
     });
   });
 
-  // Active nav
-  const sections = document.querySelectorAll("main section[id]");
-  const navLinks = document.querySelectorAll("[data-nav]");
-  function onScroll() {
-    let current = "home";
-    sections.forEach((s) => {
-      if (window.scrollY >= s.offsetTop - 180) current = s.id;
-    });
-    navLinks.forEach((l) => {
-      l.classList.toggle("is-active", l.getAttribute("href") === `#${current}`);
-    });
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  const sections = [...document.querySelectorAll("main > section.band")];
+  const navLinks = [...document.querySelectorAll(".site-nav a")];
 
-  // Services accordion
-  document.querySelectorAll("[data-service]").forEach((item) => {
-    item.addEventListener("click", () => {
-      document.querySelectorAll("[data-service]").forEach((el) => {
-        if (el !== item) el.classList.remove("is-open");
+  function markCurrent() {
+    const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    let current = "";
+    if (nearBottom && sections.length) {
+      current = sections[sections.length - 1].id;
+    } else {
+      const marker = window.innerHeight * 0.3;
+      sections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= marker) current = section.id;
       });
-      item.classList.toggle("is-open");
-    });
-  });
-
-  // Skill bars on view
-  const bars = document.querySelectorAll(".bar");
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-on");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.35 }
-    );
-    bars.forEach((b) => io.observe(b));
-  } else {
-    bars.forEach((b) => b.classList.add("is-on"));
-  }
-
-  // Motion
-  function initMotion() {
-    if (typeof gsap === "undefined" || reduceMotion) return;
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.from(".hero-card", { opacity: 0, y: 28, duration: 0.8, ease: "power3.out" });
-    gsap.from(".toolkit-card, .skills-strip, .services-card, .stats-card", {
-      opacity: 0,
-      y: 24,
-      duration: 0.7,
-      stagger: 0.1,
-      delay: 0.15,
-      ease: "power3.out",
-    });
-
-    gsap.utils.toArray(".work-card, .about-card, .contact-only").forEach((el) => {
-      gsap.from(el, {
-        scrollTrigger: { trigger: el, start: "top 88%" },
-        opacity: 0,
-        y: 36,
-        duration: 0.7,
-        ease: "power3.out",
-      });
+    }
+    navLinks.forEach((link) => {
+      const on = link.getAttribute("href") === `#${current}`;
+      if (on) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initMotion);
-  } else {
-    initMotion();
-  }
+  window.addEventListener("scroll", markCurrent, { passive: true });
+  markCurrent();
 })();

@@ -1,91 +1,45 @@
-# Emad Siddig | Full-Stack Web Developer & Aspiring Software Developer 🌐
+# Emad Siddig
 
-Welcome to my personal portfolio! This website showcases who I am, what I do, and some of my projects. It’s designed to be a clean, modern, and responsive representation of my skills and experience. :contentReference[oaicite:1]{index=1} 
+Personal portfolio for Emad Siddig, a full-stack JavaScript developer based in Rwanda and a software development trainee at The Gym.
 
-🌐 **Live Demo:** http://omda-si.github.io/portfolio/
+**Live:** http://omda-si.github.io/portfolio/
 
----
+The visual system — palette, type, components, and the rules it refuses — is documented in [DESIGN.md](DESIGN.md).
 
-## 🚀 About Me
+## Contact
 
-Hi! I’m **Emad Siddig**, a passionate Full-Stack Web Developer and aspiring Software Developer. I enjoy crafting beautiful, efficient, and user-friendly digital solutions. I’m continually learning and improving my skills to build applications that solve real problems. :contentReference[oaicite:3]{index=3}
+- Email: emadosiddig@gmail.com
+- GitHub: https://github.com/Omda-Si
+- LinkedIn: https://www.linkedin.com/in/emad-siddig-10234535b
+- X: https://x.com/omdasiddig1
+- Instagram: https://www.instagram.com/omda_wadsiddig
 
-📍 Based in Rwanda  
-📧 emadosiddig@gmail.com :contentReference[oaicite:4]{index=4}
+## What’s in the repo
 
----
+Static HTML, CSS, and JavaScript. No build step. GitHub Pages serves the files at the repository root.
 
-## 💻 Technologies & Skills
+| File | Role |
+| --- | --- |
+| `index.html` | Page structure and copy |
+| `style.css` | Design tokens and layout |
+| `script.js` | Theme, mobile menu, keyboard navigation |
+| `assets/CV.pdf` | Curriculum vitae |
+| `assets/emad-photo.jpg` | Color portrait used on the page |
+| `assets/emad-bw.jpg` | Black-and-white version of the same portrait, kept on file |
 
-Technologies I work with: :contentReference[oaicite:5]{index=5}
+## Selected work
 
-| Technology | Proficiency |
-|------------|-------------|
-| HTML5 & CSS3 | 95% |
-| JavaScript | 85% |
-| React.js | 80% |
-| Python | 90% |
-| C / C++ | 85% |
-| Databases (SQL/NoSQL) | 80% |
+The page lists six projects. Repositories:
 
----
+- [Pixel Hills](https://github.com/Omda-Si/Visual-Lab) — the hackathon repo was renamed from `hacthon_project`; the old URL redirects here. Live demo: https://wondrous-sopapillas-dc4d45.netlify.app/
+- [RoOby Shop](https://github.com/Omda-Si/RoOby-Shop) — https://roobysweets.netlify.app
+- [Secrets](https://github.com/Omda-Si/Secrets) — https://secrets-knfj.onrender.com/
+- [University of Sudan site](https://github.com/Omda-Si/University-website) — https://omda-si.github.io/University-website/
+- [Quiz Application](https://github.com/Omda-Si/Quiz-Application-)
+- [Account Management System in C](https://github.com/Omda-Si/Account-Management-System-in-C)
 
-## 📂 Projects
+Skill percentages on the page are Emad’s own estimates, carried over from the previous version of this site. They are not certifications.
 
-Here are some featured projects from the portfolio section: :contentReference[oaicite:6]{index=6}
+## License
 
-### 🔹 University Website
-
-A full university site with features and services including online applications.  
-**Tech:** HTML5, CSS, JavaScript :contentReference[oaicite:7]{index=7}
-
-
-
----
-
-### 🔹 Account Management System
-
-A productivity application for managing tasks, deadlines, and team collaboration with real-time updates.  
-**Tech:** C language :contentReference[oaicite:8]{index=8}
-
-
----
-
-### 🔹 Responsive Portfolio Website
-
-A modern, responsive personal portfolio with animations and contact form.  
-**Tech:** HTML5, CSS3, JavaScript :contentReference[oaicite:9]{index=9}
-
----
-
-## 🛠 Services I Offer
-
-I provide a range of development services: :contentReference[oaicite:10]{index=10}
-
-- **Web Development** — Modern, responsive sites.  
-- **Full-Stack Development** — Frontend + backend solutions.  
-- **Responsive & Mobile-Friendly Design**.  
-- **Database Design** — SQL & NoSQL.  
-- **Bug Fixing & Performance Optimization.**
-
----
-
-## 📫 Contact Me
-
-Let’s build something amazing! Feel free to reach out: :contentReference[oaicite:11]{index=11}
-
-- 📧 **Email:** emadosiddig@gmail.com  
-- 📍 **Location:** Rwanda
-
----
-
-## ⭐ License
-
-This project (the portfolio site) is open source and free to use.  
-*Feel free to customize it for your own portfolio or inspiration.*
-
----
-
-## 🙌 Acknowledgements
-
-Thank you for visiting my portfolio page — I hope it gives you a clear picture of my work and capabilities. :contentReference[oaicite:12]{index=12}
+The site source is free to read and adapt. The portrait and CV are Emad’s, and are not a general-purpose asset pack.
