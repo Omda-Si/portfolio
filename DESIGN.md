@@ -1,34 +1,30 @@
-# Design guide: Night knit
+# Design guide: The trace
 
 This is the style guide for Emad Siddig’s portfolio. The page is a static site (`index.html`, `style.css`, `script.js`) published on GitHub Pages. Recruiters and clients should be able to tell who he is, what he has shipped, and how to email him, without learning a dashboard.
 
 ## Theme
 
-**Night knit.** The palette is taken from the color photograph in `assets/emad-photo.jpg`, which the previous design had flattened to grayscale.
+**The trace.** The portrait is not on the page. The opening is the path of one request: interface, API, database. That is the work he describes, and it is what Pixel Hills, RoOby Shop, and Secrets actually span.
 
-Sampled from that file, then adjusted only enough to hit WCAG AA:
+Night knit, the previous theme, took sage, cream, and night navy from `assets/emad-photo.jpg`. Without the photograph those colors had no source, so the palette changed. The files are still in `assets/` and are not referenced by the page. There is no Open Graph image.
 
-| Source in the photo | Sample | UI use |
-| --- | --- | --- |
-| Night sky behind him | `#040a16` | Dark surface `#10141c` (lifted so type can sit on it) |
-| Shadow beside the sleeve | `#191c25` | Dark surface container |
-| Sage quarter-zip | `#b9c6ae` | Light surface `#e4eadc`, and dark secondary text `#b7c4ad` |
-| Knit highlight | `#e4f3dc` | Dark on-surface `#e6eedd` |
-| Cream sleeve stripe | `#f6f3d0` | Primary action on night `#f3efd0`; day-theme stripe `#6e5830` so the bar stays visible on sage |
+The new colors are a schematic, not a sweater:
 
-The only ornament is those three sleeve bars, once, above the name. They are decoration. The `h1` is the accessible name. Nothing else uses a stripe, a glow, or a gradient. The mark is not in the header, where it would look like a menu icon.
+- Night surface `#0e1a2b` is blueprint ink. It is not the photograph’s sky, and it is not pure `#0a0a0a`.
+- Day surface `#e6eef7` is blueprint paper. It is not cream (`#F4F1EA`).
+- `--md-sys-color-trace` is the request: amber `#f0c14d` on night, darkened amber `#8a5208` on day so it stays AA. It marks the moving point and, at night, the email button. It is one mark, not a glow.
 
-Day colors are the sweater in daylight (sage field, night-ink text, ink button). Night colors are the photograph’s background (navy field, knit-colored text, cream button). Neither theme is an afterthought.
+Type did not change. Source Serif 4 still sets the name and the hop names. Atkinson Hyperlegible still sets the UI. The pairing is about reading his name and the work, not about a garment.
 
 ### Why this, for this person
 
-Emad is a full-stack JavaScript developer in Rwanda, a trainee at The Gym, and the person in that photograph. The work on the page runs from a STEM lab (Pixel Hills, 2nd at Cursor Kigali Hackathon) through an Arabic shop, an auth app, a university site, a quiz, and a C account program. The audience is a recruiter or a client deciding whether to write to him.
+Emad is a full-stack JavaScript developer in Rwanda and a trainee at The Gym. He builds the screen, the route, and the data underneath. Pixel Hills is a React lab for chemistry, biology, and physics (2nd, Cursor Kigali Hackathon). RoOby Shop is an Arabic, right-to-left store that hands orders to WhatsApp. Secrets keeps sessions in PostgreSQL. The account program in C writes `account.dat`.
 
-The opening gives them the face, the role, two concrete projects, and the email. The work section gives them problem, what he built, and result, in that order. Skills stay self-rated and out of the first screen.
+The audience is a recruiter or a client deciding whether to email him. The opening gives the name, that stack as a thing you can step through, two concrete projects, and the address.
 
 ### What this theme refuses
 
-Documented in the last section. In short: no purple gradients, no glass, no Inter, no donut scores, no rounded-card grid, no cream-and-terracotta editorial kit, no acid green on pure black. The sage here is a measured sweater color, not a neon accent. The serif is roman Source Serif 4 for titles only, not an italic display face on a beige page.
+Documented in the last section. In short: no purple gradients, no glass, no Inter, no donut scores, no rounded-card grid, no cream-and-terracotta kit, no acid green, no particle field, no matrix rain, no floating code-snippet cards, no typing-cursor tagline. The trace is a line and three named stops. The words on the stops are his real work.
 
 ## Color roles
 
@@ -40,42 +36,41 @@ Roles are defined in [Material color roles](https://m3.material.io/styles/color/
 
 | Token | Hex | Job |
 | --- | --- | --- |
-| `--md-sys-color-surface` | `#10141c` | Page background |
-| `--md-sys-color-surface-container` | `#191c25` | Hover wash |
-| `--md-sys-color-surface-container-high` | `#22262f` | Pressed wash |
-| `--md-sys-color-on-surface` | `#e6eedd` | Body text, focus ring |
-| `--md-sys-color-on-surface-variant` | `#b7c4ad` | Secondary text, table caption, stack line |
-| `--md-sys-color-primary` | `#f3efd0` | Filled button (the sleeve stripe) |
-| `--md-sys-color-on-primary` | `#1a1e18` | Text on that button |
-| `--md-sys-color-primary-hover` | `#e5dcaf` | Button hover |
-| `--md-sys-color-primary-pressed` | `#d4c98a` | Button press |
-| `--md-sys-color-secondary` | `#c5d4bc` | Reserved knit tint |
-| `--md-sys-color-on-secondary` | `#1a1e18` | Text on secondary |
-| `--md-sys-color-outline` | `#8b9784` | Control borders |
-| `--md-sys-color-outline-variant` | `#4a554c` | Hairline dividers between records |
-| `--md-sys-color-inverse-surface` | `#e4eadc` | Inverse pair, for selection logic |
-| `--md-sys-color-inverse-on-surface` | `#1a1e18` | Text on inverse |
-| `--md-sys-color-stripe` | `#f3efd0` | Middle sleeve bar |
-| `--md-sys-color-caption-bg` / `fg` | `#10141c` / `#f3efd0` | Photo caption. Fixed, because it sits on the picture |
+| `--md-sys-color-surface` | `#0e1a2b` | Page background |
+| `--md-sys-color-surface-container` | `#162536` | Hover wash |
+| `--md-sys-color-surface-container-high` | `#1d3046` | Pressed wash |
+| `--md-sys-color-on-surface` | `#e8eef6` | Body text, focus ring |
+| `--md-sys-color-on-surface-variant` | `#b4c5d8` | Secondary text, table caption, stack line |
+| `--md-sys-color-primary` | `#f0c14d` | Filled button, same amber as the trace |
+| `--md-sys-color-on-primary` | `#1c1406` | Text on that button |
+| `--md-sys-color-primary-hover` | `#e2b03a` | Button hover |
+| `--md-sys-color-primary-pressed` | `#c99622` | Button press |
+| `--md-sys-color-secondary` | `#9bb0c6` | Reserved blue-gray |
+| `--md-sys-color-on-secondary` | `#0e1a2b` | Text on secondary |
+| `--md-sys-color-outline` | `#8aa4bf` | Control borders and the request line |
+| `--md-sys-color-outline-variant` | `#2a4158` | Dividers between records |
+| `--md-sys-color-inverse-surface` | `#e6eef7` | Inverse pair |
+| `--md-sys-color-inverse-on-surface` | `#102033` | Text on inverse |
+| `--md-sys-color-trace` | `#f0c14d` | The request mark |
 
 ### Day
 
 | Token | Hex | Job |
 | --- | --- | --- |
-| `--md-sys-color-surface` | `#e4eadc` | Page background |
-| `--md-sys-color-surface-container` | `#f4f3e6` | Hover wash (stripe cream) |
-| `--md-sys-color-surface-container-high` | `#f7f6ee` | Pressed wash |
-| `--md-sys-color-on-surface` | `#1a1e18` | Body text, focus ring |
-| `--md-sys-color-on-surface-variant` | `#3e493c` | Secondary text |
-| `--md-sys-color-primary` | `#1a2318` | Filled button |
-| `--md-sys-color-on-primary` | `#f4f3e6` | Text on that button |
-| `--md-sys-color-primary-hover` | `#2c3830` | Button hover |
-| `--md-sys-color-primary-pressed` | `#0e140f` | Button press |
-| `--md-sys-color-secondary` | `#243028` | Deep knit |
-| `--md-sys-color-on-secondary` | `#f4f3e6` | Text on secondary |
-| `--md-sys-color-outline` | `#3e493c` | Control borders |
-| `--md-sys-color-outline-variant` | `#b7c2ae` | Dividers |
-| `--md-sys-color-stripe` | `#6e5830` | Middle sleeve bar, darkened so it reads on sage |
+| `--md-sys-color-surface` | `#e6eef7` | Page background, blueprint paper |
+| `--md-sys-color-surface-container` | `#f4f7fb` | Hover wash |
+| `--md-sys-color-surface-container-high` | `#fbfdff` | Pressed wash |
+| `--md-sys-color-on-surface` | `#102033` | Body text, focus ring |
+| `--md-sys-color-on-surface-variant` | `#2c435c` | Secondary text |
+| `--md-sys-color-primary` | `#102033` | Filled button |
+| `--md-sys-color-on-primary` | `#f4f7fb` | Text on that button |
+| `--md-sys-color-primary-hover` | `#1c334d` | Button hover |
+| `--md-sys-color-primary-pressed` | `#0a1522` | Button press |
+| `--md-sys-color-secondary` | `#243e58` | Deeper ink |
+| `--md-sys-color-on-secondary` | `#f4f7fb` | Text on secondary |
+| `--md-sys-color-outline` | `#2c435c` | Control borders and the request line |
+| `--md-sys-color-outline-variant` | `#c5d2e2` | Dividers |
+| `--md-sys-color-trace` | `#8a5208` | The request mark, darkened for the paper |
 
 ### Contrast (WCAG AA)
 
@@ -83,16 +78,17 @@ Body text and button labels are above 4.5:1. Large title text is well above 3:1.
 
 | Pair | Ratio | Use |
 | --- | --- | --- |
-| `#e6eedd` on `#10141c` | 15.5:1 | Night body |
-| `#b7c4ad` on `#10141c` | 10.1:1 | Night secondary |
-| `#1a1e18` on `#f3efd0` | 15.9:1 | Night button |
-| `#1a1e18` on `#e5dcaf` | above 7:1 | Night button hover |
-| `#1a1e18` on `#e4eadc` | 13.8:1 | Day body |
-| `#3e493c` on `#e4eadc` | 7.7:1 | Day secondary |
-| `#f4f3e6` on `#1a2318` | 14.5:1 | Day button |
-| `#f3efd0` on `#10141c` | 15.9:1 | Photo caption |
+| `#e8eef6` on `#0e1a2b` | 15.0:1 | Night body |
+| `#b4c5d8` on `#0e1a2b` | 9.9:1 | Night secondary |
+| `#1c1406` on `#f0c14d` | 10.8:1 | Night button |
+| `#1c1406` on `#e2b03a` | 9.1:1 | Night button hover |
+| `#f0c14d` on `#0e1a2b` | 10.4:1 | Night trace mark |
+| `#102033` on `#e6eef7` | 14.1:1 | Day body |
+| `#2c435c` on `#e6eef7` | 8.7:1 | Day secondary |
+| `#f4f7fb` on `#102033` | 15.3:1 | Day button |
+| `#8a5208` on `#e6eef7` | 5.5:1 | Day trace mark |
 
-Selection is `#f3efd0` on `#1a1e18` in both themes. Meaning is never carried by color alone: the current nav item is underlined and exposed with `aria-current`, links in prose are underlined, and “Available for project work” is a sentence.
+Selection is `#f0c14d` on `#1c1406` in both themes (10.8:1). Meaning is never carried by color alone: the current nav item is underlined and exposed with `aria-current`, the selected hop is underlined and exposed with `aria-checked`, links in prose are underlined, and “Available for project work” is a sentence.
 
 ## Type
 
@@ -119,7 +115,7 @@ Material’s type scale is the model for the steps ([M3 type scale](https://m3.m
 
 ## Shape, spacing, elevation
 
-Shape is almost square. Photographs and sections have no radius. Controls use `--md-sys-shape-corner-small: 4px`, enough to mark a button without turning it into a pill.
+Shape is almost square. Sections have no radius. The request mark is a circle because it is a point on a line, not a card. Controls use `--md-sys-shape-corner-small: 4px`, enough to mark a button without turning it into a pill.
 
 Spacing is a 4px-based scale on `:root`:
 
@@ -147,7 +143,7 @@ The task of the page, in order:
 4. Background, facts, self-rated skills, CV.
 5. Contact and profiles.
 
-From 900px up, the opening is a two-column plate. The photograph takes the free width and runs at least the height of the viewport under the header (`min-height: calc(100dvh - 4.5rem)`). The copy column stops at 42rem and is vertically centered. Wider windows give the extra space to the photograph, not to the line length.
+From 900px up, the opening is two columns. The name, the short proof, and the email stay in a column capped near 36rem. The trace takes the remaining width and is centered in a viewport-tall row (`min-height: calc(100dvh - 4.5rem)`). Wider windows lengthen the gap beside the trace, not the paragraph. On a phone the email stays above the trace, so the first screen still has the address, and the diagram continues underneath.
 
 Below that, content sits in `.wrap`: `min(72rem, calc(100% - 2.5rem))`, centered. At 1440px that is a column with real margins, not a stretched paragraph.
 
@@ -165,7 +161,7 @@ Visually hidden until focused, then pinned to the top left on the primary fill. 
 
 ### Header and wordmark
 
-Sticky, solid surface, 1px bottom border. The wordmark is the name only. The sleeve mark is not in the header: at that size it reads as a menu icon, and on a phone it would sit next to the real Menu button. Hover underlines the name. Focus uses the global ring.
+Sticky, solid surface, 1px bottom border. The wordmark is the name only. Hover underlines the name. Focus uses the global ring.
 
 ### Primary navigation
 
@@ -177,7 +173,7 @@ Label is the word “Menu”, switching to “Close”. `aria-expanded` and `ari
 
 ### Theme switch
 
-Visible label “Night on” or “Day on”, so the words are the current state, not the destination. The `aria-label` states which theme is on and what the button will do (“Switch to day colors” / “Switch to night colors”). The choice is stored in `localStorage` under `emad-theme` only after a click. First visit follows `prefers-color-scheme`. A short script in `head` sets the attribute before paint.
+A toggle. Visible text is “Night theme” or “Day theme”, the mode that is on. `aria-pressed` is `true` for night and `false` for day. A visually hidden phrase in the button says what pressing does: “Press to switch to day theme” or “Press to switch to night theme.” There is no separate `aria-label`, so the accessible name is that full sentence. The choice is stored in `localStorage` under `emad-theme` only after a click. First visit follows `prefers-color-scheme`. A short script in `head` sets the attribute before paint.
 
 ### Filled button
 
@@ -191,9 +187,15 @@ Download CV, theme switch, menu. 1px `outline` border, transparent fill, surface
 
 Underlined. Hover adds the same wash as nav. Project sources and live sites say which project in visually hidden text, and that they open in a new tab.
 
-### Intro plate
+### The request
 
-Photograph, caption bar, sleeve mark, `h1`, two paragraphs, availability sentence, email button, link to the work. The caption bar is a solid night strip even in day theme, because it sits on the photo. Caption contrast is 15.9:1.
+A `figure` beside the name. Caption: “One request, three stops.” Three buttons are a radiogroup: Interface, API, Database. Each has a paragraph of real work, wired with `aria-describedby`, and the paragraphs stay visible without JavaScript.
+
+The selected hop is underlined and `aria-checked="true"`. A round mark sits on the line beside it. Arrow keys move the selection (one tab stop, the usual radio pattern). “Play the request” walks Interface, then API, then Database, and the mark travels the line. While it plays, the button says “Stop”. A visually hidden `aria-live="polite"` status repeats the hop for assistive tech. It stays empty on load, so the page does not announce itself.
+
+`prefers-reduced-motion: reduce` drops the travel. The same control becomes “Next hop” and moves one stop per click, instantly. The line is already drawn, so the path is readable with no motion at all.
+
+The copy on the stops is not sample code. It names Pixel Hills, RoOby Shop, Secrets, PostgreSQL, WhatsApp, and `account.dat`, which are his.
 
 ### Project record
 
@@ -230,6 +232,7 @@ No control on this page is disabled. Do not invent a greyed-out state until a co
 | Theme color change, 160ms | Shows that the surface actually changed |
 | In-page scroll | Moves to the section the person asked for |
 | Menu open | Shows where the navigation went |
+| Request mark, 700ms, only after Play | Shows the order of the three stops |
 
 `prefers-reduced-motion: reduce` sets transition and animation duration to nearly zero and uses an instant scroll. There is no entrance animation, no scroll-triggered fade, and no pulsing status dot.
 
@@ -241,8 +244,8 @@ GSAP was removed. It only faded blocks in on scroll, which did not explain anyth
 - Landmarks: header, primary nav, main, footer.
 - Skip link.
 - Language is `en`.
-- Portrait alt text describes the person and the sweater. The sleeve SVG is `aria-hidden`.
-- Focus ring: 3px `on-surface` outline, offset 3px, with a 3px surface-colored gap so the ring stays visible on both the cream button and the ink button. `:focus-visible` only, except the skip link, which must appear on `:focus`.
+- The portrait is not in the page. The request line and the moving mark are `aria-hidden`. The hops are buttons.
+- Focus ring: 3px `on-surface` outline, offset 3px, with a 3px surface-colored gap so the ring stays visible on both the amber button and the ink button. `:focus-visible` only, except the skip link, which must appear on `:focus`.
 - `forced-colors: active` keeps a `CanvasText` border on controls and uses `Highlight` for the focus ring.
 - Touch targets for controls and listed links are at least 44px.
 - Text sizes and spacing use `rem`. The layout has to hold at 320px width and at 200% text size. See the review notes in the pull request for the measured pass.
@@ -295,14 +298,14 @@ None of these traits proves a machine drew the page. Humans ship them too. A sin
 
 ### This project does not use those cliches
 
-Night knit is allowed to be quiet. It is not allowed to be that bundle.
+The trace is allowed to be a diagram of his work. It is not allowed to be that bundle.
 
-- No purple, indigo, or pink gradient. No gradient text. No glass. No glow. No blob. No neon cyan (the previous version of this site used that dashboard look).
+- No purple, indigo, or pink gradient. No gradient text. No glass. No glow. No blob. No particle background. No matrix rain. No neon cyan (an earlier version of this site used that dashboard look).
 - No Inter, Geist, Roboto, or Space Grotesk.
-- No centered hero, no pill pair, no “trusted by” row, no stat tiles. The old “6+ / 2nd / FS / Gym” grid was four decorations. The 2nd-place result now sits on Pixel Hills, where it is a fact.
-- No rounded card grid, no icon tiles, no emoji, no skill donuts.
-- No cream page, no terracotta, no acid green, no italic editorial headline. Sage and cream are here because they are in the photograph.
+- No centered hero, no pill pair, no “trusted by” row, no stat tiles. The 2nd-place result sits on Pixel Hills, where it is a fact.
+- No rounded card grid, no icon tiles, no emoji, no skill donuts, no floating code-snippet cards, no typing-cursor tagline.
+- No cream page, no terracotta, no acid green, no italic editorial headline. Blueprint paper is blue-gray (`#e6eef7`), not cream.
 - No all-caps eyebrows, no arrow suffixes on buttons, no monospace label chrome.
-- Motion only for theme change, in-page movement, and the menu.
+- Motion only for the theme change, in-page movement, the menu, and the request mark after someone presses Play.
 
-If a later edit adds a card grid, a gradient, or a new font “to make it pop,” it is off this guide. Change the photograph’s colors only when contrast fails, and write the new hex in the tables above.
+If a later edit adds a card grid, a gradient, or a portrait back “to make it personal,” it is off this guide. Change a hex only when contrast fails, and write the new value in the tables above.
