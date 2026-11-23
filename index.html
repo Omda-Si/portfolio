@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Emad Siddig, full-stack JavaScript developer</title>
   <meta name="description" content="Emad Siddig is a full-stack JavaScript developer in Rwanda and a software development trainee at The Gym. Work includes Pixel Hills, RoOby Shop, and Secrets.">
-  <meta name="theme-color" content="#10141c">
+  <meta name="theme-color" content="#0e1a2b">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script>
     (function () {
@@ -14,7 +14,7 @@
         var theme = stored || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
         document.documentElement.setAttribute("data-theme", theme);
         var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute("content", theme === "light" ? "#e4eadc" : "#10141c");
+        if (meta) meta.setAttribute("content", theme === "light" ? "#e6eef7" : "#0e1a2b");
       } catch (err) {}
     })();
   </script>
@@ -39,25 +39,17 @@
     </nav>
 
     <div class="header-tools">
-      <button type="button" class="theme-toggle" id="themeToggle">Night colors</button>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="true">
+        <span>Night theme</span>
+        <span class="visually-hidden">, on. Press to switch to day theme.</span>
+      </button>
       <a class="cv-link" href="assets/CV.pdf" download>Download CV</a>
     </div>
   </header>
 
   <main id="main">
     <section class="intro" id="top">
-      <figure class="intro-photo">
-        <img src="assets/emad-photo.jpg" alt="Emad Siddig at night, wearing a sage green quarter-zip sweater with cream stripes." width="769" height="1024" fetchpriority="high">
-        <figcaption>Emad Siddig, Rwanda.</figcaption>
-      </figure>
       <div class="intro-copy">
-        <p class="sleeve" aria-hidden="true">
-          <svg viewBox="0 0 132 14" width="132" height="14">
-            <rect width="132" height="3" y="0" fill="currentColor"/>
-            <rect class="mark-mid" width="132" height="3" y="5.5"/>
-            <rect width="132" height="3" y="11" fill="currentColor"/>
-          </svg>
-        </p>
         <h1>Emad Siddig</h1>
         <p class="lede">Full-stack JavaScript developer in Rwanda, and a software development trainee at The Gym. I build the interface, the REST API, and the database behind it.</p>
         <p>Pixel Hills, a lab for chemistry, biology, and physics, placed 2nd at the Cursor Kigali Hackathon. RoOby Shop is an Arabic sweets store with a right-to-left layout, an admin, and orders sent through WhatsApp.</p>
@@ -67,6 +59,40 @@
           <a class="text-link" href="#work">See the projects</a>
         </div>
       </div>
+
+      <figure class="trace">
+        <figcaption id="trace-title">One request, three stops</figcaption>
+        <div class="trace-board">
+          <div class="trace-rail" aria-hidden="true">
+            <span class="trace-token" id="traceToken"></span>
+          </div>
+          <div class="trace-stops" role="radiogroup" aria-labelledby="trace-title">
+            <div class="trace-stop">
+              <button type="button" role="radio" aria-checked="true" tabindex="0" id="hop-0" aria-describedby="hop-0-text" data-hop="0">
+                <span class="hop-kicker">01</span>
+                <span class="hop-name">Interface</span>
+              </button>
+              <p id="hop-0-text">The screen people use. Pixel Hills is a React lab for chemistry, biology, and physics. RoOby Shop is the Arabic storefront.</p>
+            </div>
+            <div class="trace-stop">
+              <button type="button" role="radio" aria-checked="false" tabindex="-1" id="hop-1" aria-describedby="hop-1-text" data-hop="1">
+                <span class="hop-kicker">02</span>
+                <span class="hop-name">API</span>
+              </button>
+              <p id="hop-1-text">The route between the screen and the data. Node and Express. RoOby hands an order to WhatsApp. Secrets checks the session.</p>
+            </div>
+            <div class="trace-stop">
+              <button type="button" role="radio" aria-checked="false" tabindex="-1" id="hop-2" aria-describedby="hop-2-text" data-hop="2">
+                <span class="hop-kicker">03</span>
+                <span class="hop-name">Database</span>
+              </button>
+              <p id="hop-2-text">Where it has to hold. Secrets keeps production sessions in PostgreSQL. The account program in C writes account.dat.</p>
+            </div>
+          </div>
+        </div>
+        <p class="visually-hidden" id="trace-status" aria-live="polite"></p>
+        <button type="button" class="trace-play" id="tracePlay">Play the request</button>
+      </figure>
     </section>
 
     <section class="section" id="work">

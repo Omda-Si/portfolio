@@ -18,16 +18,19 @@
     var next = night ? "dark" : "light";
     doc.setAttribute("data-theme", next);
     if (themeToggle) {
-      themeToggle.textContent = night ? "Night on" : "Day on";
-      themeToggle.setAttribute(
-        "aria-label",
-        night
-          ? "Night colors are on. Switch to day colors."
-          : "Day colors are on. Switch to night colors."
-      );
+      themeToggle.setAttribute("aria-pressed", night ? "true" : "false");
+      themeToggle.replaceChildren();
+      var label = document.createElement("span");
+      label.textContent = night ? "Night theme" : "Day theme";
+      var hint = document.createElement("span");
+      hint.className = "visually-hidden";
+      hint.textContent = night
+        ? ", on. Press to switch to day theme."
+        : ", on. Press to switch to night theme.";
+      themeToggle.append(label, hint);
     }
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", night ? "#10141c" : "#e4eadc");
+    if (meta) meta.setAttribute("content", night ? "#0e1a2b" : "#e6eef7");
   }
 
   applyTheme(doc.getAttribute("data-theme") === "light" ? "light" : "dark");
@@ -156,4 +159,109 @@
 
   window.addEventListener("scroll", markCurrent, { passive: true });
   markCurrent();
+
+  var hops = document.querySelectorAll("[data-hop]");
+  var token = document.getElementById("traceToken");
+  var rail = document.querySelector(".trace-rail");
+  var playBtn = document.getElementById("tracePlay");
+  var status = document.getElementById("trace-status");
+  var hopIndex = 0;
+  var playTimer = null;
+  var playing = false;
+
+  function placeToken(index) {
+    if (!token || !rail || !hops[index]) return;
+    var railBox = rail.getBoundingClientRect();
+    var hopBox = hops[index].getBoundingClientRect();
+    var y = hopBox.top + hopBox.height / 2 - railBox.top;
+    token.style.top = y + "px";
+  }
+
+  function setPlayLabel() {
+    if (!playBtn) return;
+    if (playing) {
+      playBtn.textContent = "Stop";
+      return;
+    }
+    playBtn.textContent = reduced() ? "Next hop" : "Play the request";
+  }
+
+  function selectHop(index, announce) {
+    hopIndex = index;
+    hops.forEach(function (hop, i) {
+      var on = i === index;
+      hop.setAttribute("aria-checked", on ? "true" : "false");
+      hop.tabIndex = on ? 0 : -1;
+    });
+    placeToken(index);
+    if (announce && status) {
+      var name = hops[index].querySelector(".hop-name");
+      var text = document.getElementById(hops[index].getAttribute("aria-describedby"));
+      status.textContent = (name ? name.textContent : "Stop") + ". " + (text ? text.textContent : "");
+    }
+  }
+
+  function stopPlay() {
+    playing = false;
+    if (playTimer) {
+      clearTimeout(playTimer);
+      playTimer = null;
+    }
+    setPlayLabel();
+  }
+
+  hops.forEach(function (hop, index) {
+    hop.addEventListener("click", function () {
+      stopPlay();
+      selectHop(index, true);
+    });
+    hop.addEventListener("keydown", function (event) {
+      var next = null;
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") next = (index + 1) % hops.length;
+      if (event.key === "ArrowUp" || event.key === "ArrowLeft") next = (index + hops.length - 1) % hops.length;
+      if (next === null) return;
+      event.preventDefault();
+      stopPlay();
+      selectHop(next, true);
+      hops[next].focus();
+    });
+  });
+
+  if (playBtn) {
+    setPlayLabel();
+    playBtn.addEventListener("click", function () {
+      if (playing) {
+        stopPlay();
+        return;
+      }
+      if (reduced()) {
+        selectHop((hopIndex + 1) % hops.length, true);
+        return;
+      }
+      playing = true;
+      setPlayLabel();
+      var step = 0;
+      function advance() {
+        selectHop(step, true);
+        step += 1;
+        if (step < hops.length) {
+          playTimer = setTimeout(advance, 900);
+        } else {
+          playing = false;
+          playTimer = null;
+          setPlayLabel();
+        }
+      }
+      advance();
+    });
+  }
+
+  function syncToken() {
+    placeToken(hopIndex);
+  }
+  window.addEventListener("resize", syncToken);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncToken);
+  }
+  syncToken();
 })();
